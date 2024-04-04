@@ -1,0 +1,1 @@
+Store all icons here.
