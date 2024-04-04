@@ -169,10 +169,10 @@
 </div>
 <!-- End methodology overview-->
 
-<!-- Submission Experiments Table -->
+<!-- Ablation Study -->
 <div class="columns is-centered has-text-centered">
   <div class="column is-four-fifths">
-    <h4 class="title is-3" style="white-space: nowrap;">Submission Experiment</h4>
+    <h4 class="title is-3" style="white-space: nowrap;">Ablation Study</h4>
     <div class="content has-text-justified">
       <div style="text-align: justify;">
         <p>We conducted a comprehensive series of experiments, submitting a total of 30 entries. Here are select
@@ -180,73 +180,35 @@
         <table class="table is-bordered is-hoverable">
           <thead>
             <tr>
-              <th>Model</th>
-              <th>Score</th>
-              <th>Class Ratio</th>
-              <th>Number of Images</th>
-              <th>Note</th>
+              <th>Setup</th>
+              <th>Pretraining</th>
+              <th>Crowdsourced Dataset</th>
+              <th>Expert Dataset</th>
+              <th>MLOps</th>
+              <th>mAP</th>              
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>YOLOv8n</td>
-              <td>0.17</td>
-              <td>(3379 : 371 : 69 : 12)</td>
-              <td>250</td>
-              <td>Training from pre-trained weight</td>
-            </tr>
-            <tr>
-              <td>YOLOv8n</td>
-              <td>0.28</td>
-              <td>(4576 : 876 : 179 : 58)</td>
-              <td>396</td>
-              <td>Training from pre-trained weight</td>
-            </tr>
-            <tr>
-              <td>YOLOv8n</td>
-              <td>0.39</td>
-              <td>(5995 : 1353 : 495 : 130)</td>
-              <td>473</td>
-              <td>Resuming training from previous best model (YOLOv8n score 0.28)</td>
-            </tr>
-            <tr>
-              <td>YOLOv8s</td>
-              <td>0.48</td>
-              <td>(6986 : 1785 : 729 : 183)</td>
-              <td>661</td>
-              <td>Training from pre-trained weight</td>
+              <td>A</td>
+              <td>&#x2713;</td>
+              <td></td>
+              <td></td>
+              <td></td>              
+              <td>0.10</td>
             </tr>
           </tbody>
         </table>
-        <p style="font-size: 12px;">Note: Class Ratio (Undamaged Residential Building : Damaged Residential Building :
-          Undamaged Commercial Building : Damaged Commercial Building)</p>
-        <p>Further experiments were conducted, including:</p>
-        <ul style="list-style-type: none; padding-left: 0;">
-          <li style="margin-bottom: 5px;"><strong>YOLOv8m:</strong> 0.33 - Medium Baseline</li>
-          <li style="margin-bottom: 5px;"><strong>YOLOv8l:</strong> 0.39 - Large Baseline</li>
-          <li style="margin-bottom: 5px;"><strong>YOLOv8s:</strong> 0.30 - YOLOv8s with synthetic dataset addition
-          </li>
-          <li style="margin-bottom: 5px;"><strong>YOLOv8s:</strong> 0.39 - YOLOv8s with reduced prediction confidence
-            threshold to 0.28</li>
-          <li style="margin-bottom: 5px;"><strong>YOLOv8s:</strong> 0.43 - YOLOv8s training with pre-trained weights
-            and AdamW optimizer</li>
-          <li style="margin-bottom: 5px;"><strong>YOLOv8s:</strong> 0.45 - Resuming training from previous best model
-            (YOLOv8s score 0.48) with AdamW optimizer</li>
-          <li style="margin-bottom: 5px;"><strong>YOLOv8s:</strong> 0.46 - Similar to the previous experiment with
-            adjusted prediction threshold configurations</li>
-        </ul>
-        <p>From these experiments, we can conclude that our submission scores are mainly contributed by the quality of
-          the dataset. We managed to achieve the highest score of 0.48 solely from the dataset itself. Our focus was
-          primarily on preparing the training dataset, with minimal time allocated to model development. Given more
-          time, we would explore various training configurations, model backbones, and architectures. Additionally, we
-          would enhance our synthetic image generation models and collect more diverse datasets to further improve our
-          results.</p>
+
+
+
+        
       </div>
     </div>
     <br><br>
   </div>
 </div>
-<!-- End of Submission Experiments Table -->
+<!-- End of Ablation Study -->
 
   
 <!-- Logo Acknowledgment -->
