@@ -124,32 +124,14 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Summary</h2>
           <div class="content has-text-justified">
-            <p>
-              This competition requires participants to prepare the dataset from satellite images of San Juan pre- and
-              post-storm. With this dataset, participants are required to classify each building in the validation
-              dataset into one of four categories: undamaged residential buildings, damaged residential buildings,
-              undamaged commercial buildings, and damaged commercial buildings. This posed one of the greatest
-              challenges in the competition. It is difficult to determine the class of a building from these images, as
-              some buildings are indistinguishable, especially for those unfamiliar with the area. Even if we can make a
-              guess, it might be done with low confidence if there are no reliable sources available to cross-check our
-              annotations. Our success can be attributed to the quality dataset collection process. To ensure the
-              collection of a high-quality dataset, our group spent the majority of our time determining the class of
-              each building in every tile by referencing multiple reliable sources, including Google Maps,
-              OpenStreetMap, and Google Maps Street View 3D. Referring to these reliable sources provided greater
-              confidence in annotating each building, contributing to the quality dataset.</p>
-
-            <p>Participants were tasked with building a model capable of accurately predicting each building's class,
-              which presented another challenge due to the imbalanced dataset. We proposed an approach where we
-              attempted to balance the dataset by introducing synthetic images into the training dataset through
-              fine-tuning the Stable Diffusion 2 model. Unfortunately, we were unable to increase our score as adding
-              synthetic images to the training dataset had minimal impact on the model's performance. Numerous
-              experiments with different model variants and hyperparameter settings also yielded minimal improvements in
-              the score. Given more time, we could potentially increase the score by exploring other methods of model
-              development, such as incorporating different model architectures, conducting further hyperparameter
-              tuning, and collecting more diverse datasets.</p>
+            <p> The 2024 EY Open Science Data challenge focuses on coastal resilience and climate change. Participants 
+              will use high-resolution satellite datasets to build predictive models to help vulnerable coastal 
+              communities adapt to evolving conditions and recover from extreme climate events. These solutions will 
+              result in new and innovative ideas designed to increase the impact of data for societal benefit.
+            </p>
 
             <p>Despite these challenges, we are immensely grateful, and our collective efforts enabled us to achieve a
-              final mAP50 score of 0.48, placing us in the top 8% of all teams, ranking 17 out of 230.
+              final mAP50 score of 0.51, placing us in the top 5% in the public leaderboard.
             </p>
           </div>
         </div>
