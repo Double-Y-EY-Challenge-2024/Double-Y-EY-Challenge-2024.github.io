@@ -198,171 +198,24 @@
   </div>
   <!-- Key Challenges -->
 
-  <!-- Proposed Approach -->
+  
+  <!-- Methodology Overview -->
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
-      <h4 class="title is-3" style="white-space: nowrap;">Proposed Approach</h4>
-      <div class="content has-text-justified">
-        <div style="text-align: justify;">
-          <p>
-            <strong>1. Parallel Annotation:</strong> Instead of annotating the entire dataset as a single unit, we adopt
-            a strategy of segmenting the dataset into multiple tiles, each with a dimension of 512x512 pixels. We chose
-            this specific dimension to closely match the size of the validation dataset, ensuring consistency between
-            our training and evaluation processes. These tiles are distributed among team members to enable parallel
-            annotation, thereby enhancing efficiency.
-          </p>
-          <p>
-            <strong>2. Annotation of Mixed-Area Tiles Only:</strong> Our analysis of the validation dataset indicates
-            that it covers regions with mixed land use, covering both commercial and residential areas. Therefore, we
-            focus our annotation efforts solely on regions characterized by this mixed land use, optimizing resource
-            utilization and annotation accuracy.
-          </p>
-          <p>
-            <strong>3. Cross-Checking Building Classes for Accurate Labeling:</strong> Annotating building classes
-            accurately poses a significant challenge, particularly without reliable reference points and solely rely on
-            guessing. To address this, our approach incorporates the generation of Google Maps and OpenStreetMap tiles,
-            aligned with the center coordinates of each dataset tile. Additionally, we utilize shapefiles provided by
-            the organizers to identify building footprints. Furthermore, we extract center coordinates for each tile and
-            leverage them to access 3D views of the corresponding areas on Google Maps. This effort of cross-referencing
-            process ensures the accuracy of our manual annotations by validating them against multiple reliable sources.
-          </p>
-          <p>
-            <strong>4. Synthetic Image Generation for Handling Imbalanced Datasets:</strong> To mitigate the class
-            imbalance in our dataset, particularly in representing damaged building classes, we propose employing a
-            synthetic image generation technique. We draw inspiration from recent research outlined in a paper detailing
-            the application of Stable Diffusion 2 with LoRa adaptation for generating synthetic aerial images. By
-            fine-tuning this model, we aim to create synthetic images of damaged building classes, thus narrowing the
-            representation gap in our training dataset and reducing model bias. The paper we reference in our
-            replication efforts can be found at the following link: https://arxiv.org/abs/2311.12345
-          </p>
-          <p>
-            <strong>5. Transfer Learning through Fine-Tuning of a Pre-trained Model:</strong> To enhance the performance
-            of our model, we employ transfer learning by fine-tuning our dataset with a pre-trained model. Specifically,
-            we utilize the YOLOv8 model developed by Ultralytics as our pre-trained model. Leveraging transfer learning
-            allows us to capitalize on the knowledge gained by the pre-trained model on a related task, facilitating
-            faster convergence and potentially improving the accuracy of our predictions.
-          </p>
-        </div>
-      </div>
-      <br><br>
-    </div>
-  </div>
-  <!-- Proposed Approach -->
-
-  <!-- Methodology -->
-  <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h4 class="title is-3" style="white-space: nowrap;">Methodology</h4>
-      <div class="content has-text-justified">
-        <div style="text-align: justify;">
-          <p>
-            <strong>1. Data Collection:</strong>
-            The dataset consists of pre- and post-event satellite imagery partitioned into multiple tiles. Initially in
-            GeoTiff format, each tile is converted to JPG to reduce storage consumption. With a total of 21,460 tiles,
-            including both pre- and post-event images, we generated OpenStreetMap and GoogleMap representations for each
-            tile by aligning and matching raster layers in QGIS. Additionally, building footprint information was
-            extracted by aligning shapefile raster layers with the GeoTiff dataset.
-
-            Manual filtering was performed to select only images with mixed areas of residential and commercial zones.
-            Furthermore, we extracted center coordinates for each tile and leveraged them to access 3D views of the
-            corresponding areas on Google Maps. This enabled us to label all the buildings with high confidence by
-            cross-checking building classes from multiple references.
-
-            All tiles were then distributed among team members for manual annotation using VGG Image Annotator and in
-            COCO annotation format. Data hosting and version control were managed through GitHub, utilizing Git for
-            seamless working between local and remote repositories.
-
-            At the end of the competition, we manually annotated a total of 820 images. These annotations amounted to
-            11,344 labels, distributed as follows: undamaged residential building (7951), undamaged commercial building
-            (2249), damaged residential building (907), and damaged commercial building (237).
-
-          </p>
-          <p>
-            <strong>2. Data Pipeline:</strong> To streamline workflow efficiency, we developed a data pipeline for data
-            processing and training dataset preparation. This pipeline receives JSON files containing COCO annotation
-            format data and undergoes multiple stages of processing, including JSON to COCO PyLabel dataset
-            transformation, dataset aggregation from multiple inputs, and dataset cleaning. The pipeline ultimately
-            produces YOLO structured files optimized for training YOLO-based models.
-          </p>
-          <p>
-            <strong>3. Training Machine Learning Model:</strong> Effective training of the machine learning model
-            requires substantial hardware resources and CUDA acceleration for accelerated training. We trained our model
-            by leveraging Kaggle's cloud platform, which offers generous GPU access of 30 hours per week. Fine-tuning
-            was performed on YOLOv8 pre-trained models provided by Ultralytics, utilizing their high-level framework for
-            efficient model training and evaluation without the need for extensive architectural considerations.
-          </p>
-          <p>
-            <strong>4. Monitoring Machine Learning Training:</strong> WandB is used for experiment monitoring,
-            integrated with YOLOv8 training. This facilitated efficient experimentation with
-            various YOLO variants and hyperparameters, enabling us to track and evaluate multiple models effectively.
-            WandB served as a benchmarking tool, aiding in the selection of optimal model configurations and identifying
-            areas for improvement.
-          </p>
-          <p>
-            <strong>5. Synthetic Image Generation:</strong> To generate synthetic images, we chose to fine-tune the
-            Stable Diffusion 2 model by StabilityAI. Training dataset preparation involved extracting images with
-            bounding boxes for each class from our manually annotated dataset, used to fine-tune Stable Diffusion 2 for
-            synthetic image generation. Experimentation with different settings and hyperparameters, including LoRa
-            scale, training epochs was conducted, monitored using WandB. The dataset and trained Stable Diffusion models
-            are hosted on Hugging Face.
-          </p>
-          <p>
-            <strong>6. Evaluating the Trained Model:</strong> Trained models were evaluated based on metrics such as
-            mAP50, precision, and recall for each class. Confusion matrices, confidence curves, precision-recall curves,
-            and other metrics were utilized to assess model performance. Evaluation was conducted on WandB, enabling
-            comprehensive analysis to ensure effective predictions for each class.
-          </p>
-          <p>
-            <strong>7. Prediction of Trained Model:</strong> Evaluation of the trained model involved testing on 12
-            validation images provided by the organizers. Results from the detection from each of the validation image
-            (class, confidence score, bounding box coordinates) are saved in a .txt file and all the .txt files are
-            saved in a single .zip file. This zip file is uploaded to the challenge platform to get a score on the
-            ranking board. To enhance scores, prediction configurations were adjusted to minimize bounding box overlap
-            and optimize confidence thresholds.
-          </p>
-        </div>
-      </div>
-      <br><br>
-    </div>
-  </div>
-  <!-- Methodology -->
-
-  <!-- Preparing Data for Annotation -->
-  <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3" style="white-space: nowrap;">Preparing Data for Annotation</h2>
+      <h2 class="title is-3" style="white-space: nowrap;">Methodology Overview</h2>
       <div class="content has-text-justified">
         <div style="text-align: center;">
-          <img src="static\images\preparing_data_annotation.jpg" alt="PrepareData" width="820">
-          <p class="caption" style="width: 100%; text-align: center;"><b>Figure 1. Preparing data for annotation.</b>
-            Workflow illustrating the process of preparing data prior to annotation.</p>
+          <img src="static/images/Team Double Y - Methodology.jpg" alt="PrepareData" width="820">
+          <p class="caption" style="width: 100%; text-align: center;"><b>Figure 1. Overview of the proposed methodology.</b><br>
+            Workflow illustrating the complete process from data acquisition to model training.</p>
         </div>
       </div>
-      <br><br>
+      <br>
     </div>
   </div>
-  <!-- Preparing Data for Annotation -->
+  <!-- End methodology overview-->
 
-  <!-- Data Pipeline -->
-  <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3" style="white-space: nowrap;">Data Pipeline</h2>
-      <div class="content has-text-justified">
-        <div style="text-align: center;">
-          <img src="static\images\data_pipeline.jpg" alt="PrepareData" width="820">
-          <p class="caption" style="width: 100%; text-align: center;"><b>Figure 3. Data pipeline.</b> Data pipeline
-            designed to enhance workflow efficiency for processing and preparing training datasets. Begins with the
-            transformation of JSON files containing COCO annotation format data into PyLabel datasets. Subsequently, the
-            pipeline aggregates datasets from multiple inputs and conducts a cleaning process. Ultimately, the pipeline
-            generates YOLO structured files optimized for training YOLO-based models.</p>
-        </div>
-      </div>
-      <br><br>
-    </div>
-  </div>
-  <!-- Data Pipeline -->
-
-
+  
   <!-- Model -->
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
@@ -380,10 +233,9 @@
           </p>
 
           <p>          
-            Meanwhile, our empirical study revealed 
-            that the main influencing factor on the detection accuracy is the quantity and quality of the annotated dataset. 
-            Hence, we argue that the main focus of the challenge should be data annotation. We provide details on how we built 
-            our training dataset in the next section.            
+            Meanwhile, our empirical study revealed that the main influencing factor on the detection accuracy is 
+            the quantity and quality of the annotated dataset. Hence, we argue that the main focus of the challenge 
+            should be data annotation. We provide details on how we built our training dataset in the next section.            
           </p>
         </div>
       </div>
@@ -392,6 +244,7 @@
   </div>
   <!-- Model -->
 
+  
   <!-- Submission Experiments Table -->
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
