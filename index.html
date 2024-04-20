@@ -387,29 +387,6 @@
   </div>
   <!-- Data Pipeline -->
 
-  <!-- Synthetic Image Generation -->
-  <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3" style="white-space: nowrap;">Synthetic Image Generation</h2>
-      <div class="content has-text-justified">
-        <div style="text-align: center;">
-          <img src="static\images\synthetic_generation.jpg" alt="PrepareData" width="820">
-          <p class="caption" style="width: 100%; text-align: center;"><b>Figure 4. Synthetic Image Generation.</b> The
-            representation of damaged datasets is notably low. To address the imbalance in the dataset, we implemented
-            methods to balance the training dataset by generating synthetic images. We fine-tuned the Stable Diffusion 2
-            model from StabilityAI using the training dataset obtained from manual annotations. Specific bounding boxes
-            for classes were extracted from our training dataset and compiled into a Hugging Face dataset, which serves
-            as input for training the Stable Diffusion 2 model. The trained model will then be utilized to generate
-            synthetic images. These synthetic images will be merged with background images using Copy-Paste augmentation
-            techniques. Our approach aims to replicate the methodology outlined in the referenced paper by Jian et al.
-            (2023) titled <a href="https://arxiv.org/pdf/2311.12345.pdf">Stable Diffusion For Aerial Object
-              Detection</a>. </p>
-        </div>
-      </div>
-      <br><br>
-    </div>
-  </div>
-  <!-- Synthetic Image Generation -->
 
   <!-- Model -->
   <div class="columns is-centered has-text-centered">
