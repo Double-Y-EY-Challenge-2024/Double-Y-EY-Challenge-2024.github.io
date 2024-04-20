@@ -343,31 +343,6 @@
   </div>
   <!-- Preparing Data for Annotation -->
 
-  <!-- Annotation Process -->
-  <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3" style="white-space: nowrap;">Annotation Process</h2>
-      <div class="content has-text-justified">
-        <div style="text-align: center;">
-          <img src="static\images\annotation_process.jpg" alt="PrepareData" width="820">
-          <p class="caption" style="width: 100%; text-align: center;"><b>Figure 2. Annotation process.</b> We utilized
-            the VGG Image Annotator for annotating the tiles. Each building within the tiles is classified into one of
-            four classes: undamaged residential building, damaged residential building, undamaged commercial building,
-            or damaged commercial building. During annotation, we validated the annotations by comparing them to
-            multiple resources. To determine whether a building is damaged, we compared it between pre- and post-event
-            images, looking for indications of structural damage such as roof loss. To distinguish between commercial
-            and residential buildings, we referred to resources such as Google Maps, OpenStreetMap, and Google Maps 3D.
-            These sources provide information about place names, allowing us to infer whether a given building is
-            commercial or residential. Additionally, having multiple references is beneficial in cases where the
-            pre-event images are obscured by clouds; we compare the building against other resources to verify its
-            classification.</p>
-        </div>
-      </div>
-      <br><br>
-    </div>
-  </div>
-  <!-- Annotation process -->
-
   <!-- Data Pipeline -->
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
@@ -395,15 +370,20 @@
       <div class="content has-text-justified">
         <div style="text-align: justify;">
           <p>
-            <strong>YOLOv8s:</strong> Our top-performing model is based on a small variant of YOLOv8 developed by
-            Ultralytics. We are training this pre-trained model, specifically using a resolution of 512x512 and
-            exclusively employing images with bounding boxes. All other images, including unannotated ones and
-            backgrounds without objects, are omitted from our training data. Notably, our dataset consists solely of
-            non-synthetic images. Therefore, our achieved results are solely attributed to the quality of our dataset
-            and the default settings of the model. Through our submission experiments, it's evident that the final score
-            is heavily influenced by the size and quality of the training dataset. However, due to the constraints of
-            time, we have not yet reached a definitive conclusion regarding our model's performance. Given more time for
-            annotation and a larger training dataset, we anticipate that our score could improve from the current 0.48.
+            The goal of Phase 1 is to identify and detect “damaged” and “undamaged” coastal infrastructure, which is an  
+            object detection task. To tackle this challenge, our team has opted for Ultralytics <strong>YOLOv8</strong>, 
+            one of the state-of-the-art (SOTA) object detection models renowned for its speed and accuracy. Despite the availability 
+            of competitors like YOLOv9, we prefer Ultralytics YOLOv8 for its user-friendliness and well-documented workflows 
+            that streamline training and deployment. We choose the smallest YOLOv8 - <strong>YOLOv8n</strong>, since it is 
+            <strong>unwise to use larger model when dealing with limited dataset</strong>, as it may lead to overfitting. 
+            Given more time, we would explore other YOLOv8 version and other SOTA models when we have a bigger dataset. 
+          </p>
+
+          <p>          
+            Meanwhile, our empirical study revealed 
+            that the main influencing factor on the detection accuracy is the quantity and quality of the annotated dataset. 
+            Hence, we argue that the main focus of the challenge should be data annotation. We provide details on how we built 
+            our training dataset in the next section.            
           </p>
         </div>
       </div>
