@@ -446,42 +446,63 @@
           <table class="table is-bordered is-hoverable">
             <thead>
               <tr>
-                <th>Model</th>
-                <th>Score</th>
-                <th>Class Ratio</th>
-                <th>Number of Images</th>
-                <th>Note</th>
+                <th>Setup</th>
+                <th>Pretraining</th>
+                <th>Crowdsourced Dataset</th>
+                <th>Expert Dataset</th>
+                <th>MLOps</th>
+                <th>mAP</th>                      
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>YOLOv8n</td>
-                <td>0.17</td>
-                <td>(3379 : 371 : 69 : 12)</td>
-                <td>250</td>
-                <td>Training from pre-trained weight</td>
+                <td>A</td>
+                <td>&#x2713;</td>
+                <td></td>
+                <td></td>
+                <td></td>              
+                <td>0.10</td>
               </tr>
               <tr>
-                <td>YOLOv8n</td>
-                <td>0.28</td>
-                <td>(4576 : 876 : 179 : 58)</td>
-                <td>396</td>
-                <td>Training from pre-trained weight</td>
+                <td>B</td>
+                <td>&#x2713;</td>
+                <td>&#x2713;</td>
+                <td></td>
+                <td></td>              
+                <td>0.44</td>
               </tr>
               <tr>
-                <td>YOLOv8n</td>
+                <td>C</td>
+                <td>&#x2713;</td>
+                <td></td>
+                <td>&#x2713;</td>
+                <td></td>              
                 <td>0.39</td>
-                <td>(5995 : 1353 : 495 : 130)</td>
-                <td>473</td>
-                <td>Resuming training from previous best model (YOLOv8n score 0.28)</td>
               </tr>
               <tr>
-                <td>YOLOv8s</td>
-                <td>0.48</td>
-                <td>(6986 : 1785 : 729 : 183)</td>
-                <td>661</td>
-                <td>Training from pre-trained weight</td>
+                <td>D</td>
+                <td>&#x2713;</td>
+                <td>&#x2713;</td>
+                <td>&#x2713;</td>
+                <td></td>              
+                <td>0.50</td>
               </tr>
+              <tr>
+                <td>E</td>
+                <td></td>
+                <td>&#x2713;</td>
+                <td>&#x2713;</td>
+                <td></td>              
+                <td>0.24</td>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>&#x2713;</td>
+                <td>&#x2713;</td>
+                <td>&#x2713;</td>
+                <td>&#x2713;</td>              
+                <td><b>0.51</b></td>
+              </tr>                 
             </tbody>
           </table>
           <p style="font-size: 12px;">Note: Class Ratio (Undamaged Residential Building : Damaged Residential Building :
