@@ -408,13 +408,10 @@
             the crowdsourced dataset, followed by fine-tuning on the expert dataset.
           </p>
           <p>
-            <strong>2. Start with a small model:</strong> It is advisable to begin with a small model when embarking on
-            a machine learning project. When selecting a model for training, starting with the smallest and lightest
-            model is preferable before moving on to larger and heavier models. The complexity of a model depends on its
-            parameters and the depth of its layers. By starting with a small model, we have more flexibility to expand
-            further with larger models. Our best model is the small variant of YOLOv8, and although we attempted to
-            train YOLOv8m and YOLOv8l, we were unable to surpass our small model. Please note that these findings are
-            based on our experiments, and other teams may obtain different results.
+            <strong>2. Start with a small model:</strong> We recommend starting with a smaller model. It is unwise to use a 
+            larger model when dealing with a limited dataset, as it may lead to overfitting. Our empirical study agrees with 
+            this hypothesis, as we failed to achieve a high mAP score using the bigger YOLOv8 version. Given more time, 
+            we would explore the bigger YOLOv8 version and other state-of-the-art (SOTA) models when we have a larger dataset.
           </p>
         </div>
       </div>
