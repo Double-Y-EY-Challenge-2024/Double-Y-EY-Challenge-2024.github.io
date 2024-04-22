@@ -397,14 +397,15 @@
       <div class="content has-text-justified">
         <div style="text-align: justify;">
           <p>
-            <strong>1. Dataset is all you need:</strong> It is evident that everything comes down to how we prepare the
-            dataset for training a machine learning model. No matter how deep the neural networks are or how
-            sophisticated the model is, if the dataset is of poor quality, our model will never be able to make accurate
-            predictions. Our experiments have shown that with a quality dataset, achieving a minimum of 0.40 is
-            possible, which is sufficient to meet the minimum requirement by EY for a certificate of completion. Our
-            team spent most of the time annotating the dataset and preparing a high-quality dataset. Each label was
-            cross-referenced with reliable sources using Google Maps, OpenStreetMap, and even Google 3D street view to
-            determine the class for each building.
+            <strong>1. Dataset quality is what you need:</strong> There are 2 observations from our study. Firstly, 
+            data quality is as important as data quantity. Secondly, having annotators with expertise in building damage 
+            assessment is crucial for producing the high-quality 'expert dataset.' On the contrary, non-experts tend to 
+            generate a lower quality dataset, which we refer to as a 'crowdsourced dataset.' However, a high-quality dataset 
+            tends to be smaller in size because it takes time to carefully annotate the data. Conversely, a high-quantity 
+            dataset tends to have lower quality due to a lack of expertise and attention. This mirrors a real-world scenario 
+            of a quality-quantity tradeoff. Fortunately, we found that we can combine the strengths of both datasets, as 
+            demonstrated in Setup D from our ablation study in Table I. This involves fine-tuning the pretrained model on 
+            the crowdsourced dataset, followed by fine-tuning on the expert dataset.
           </p>
           <p>
             <strong>2. Start with a small model:</strong> It is advisable to begin with a small model when embarking on
