@@ -275,34 +275,6 @@
               </tr>                  
             </tbody>
           </table>
-
-          <!--
-          <p style="font-size: 12px;">Note: Class Ratio (Undamaged Residential Building : Damaged Residential Building :
-            Undamaged Commercial Building : Damaged Commercial Building)</p>
-          -->
-          <p>Further experiments were conducted, including:</p>
-          <ul style="list-style-type: none; padding-left: 0;">
-            <li style="margin-bottom: 5px;"><strong>Setup A:</strong> 0.10 - We pretrained a YOLOv8n model using the 
-              Puerto Rico dataset. Surprisingly, we achieved a mAP of 0.10 on the EY validation dataset, without any 
-              manual annotation from our side!</li>
-            <li style="margin-bottom: 5px;"><strong>Setup B:</strong> 0.44 - When fine-tuning the pretrained model on 
-              the crowd-sourced dataset, we achieved an mAP of 0.44, which exceeds the completion threshold for this 
-              challenge (mAP 0.40). </li>
-            <li style="margin-bottom: 5px;"><strong>Setup C:</strong> 0.39 - When fine-tuning the pretrained model 
-              directly on the Expert dataset, we can achieve an mAP of 0.39, despite the dataset containing only 28 
-              unique data (84 after augmentation). This shows that the quality of data is equally important, if not 
-              more important than the quantity of data.</li>
-            <li style="margin-bottom: 5px;"><strong>Setup D:</strong> 0.50 - We initially fine-tune the pretrained 
-              model using a large-scale crowd-sourced dataset to quickly warm it up. Subsequently, we fine-tune the 
-              model on the expert dataset, which has more accurate labels. With this approach, we achieved a mAP of 
-              0.50.</li>
-            <li style="margin-bottom: 5px;"><strong>Setup E:</strong> 0.24 - We demonstrate that without pretraining, 
-              the performance is not satisfying even when both the crowd-sourced and expert datasets are utilised, 
-              only achieving mAP 0.24.</li>
-            <li style="margin-bottom: 5px;"><strong>Setup F:</strong> 0.51 - Finally, we demonstrate that by employing 
-              the proposed MLOps cycle, we can enhance the model’s mAP to 0.51. Notably, the sole human intervention 
-              in this MLOps cycle involves verifying the self-labelled data using the baseline model from Setup E.</li>         
-          </ul>
         </div>
       </div>
       <br><br>
